@@ -6,7 +6,7 @@ def score(game):
     strike = 'x'
     in_first_half = True
     for i in range(len(game)):
-        if game[i] == '/':
+        if game[i] == spare:
             result += 10 - last
         else:
             result += get_value(game[i])
@@ -20,6 +20,7 @@ def score(game):
                     result += 10 - get_value(game[i+1])
                 else:
                     result += get_value(game[i+2])
+        # your last hit
         last = get_value(game[i])
         if in_first_half == True:
             in_first_half = False
@@ -29,6 +30,7 @@ def score(game):
         if game[i].lower() == strike:
             in_first_half = True
     return result
+
 
 def get_value(char):
     try:
